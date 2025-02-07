@@ -25,6 +25,14 @@
             max-width: 400px;
             height: 500px;
         }
+        .product-details {
+            background-color: #f3f3f3;
+            padding: 10px;
+            margin: 10px auto;
+            width: 80%;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
@@ -41,8 +49,18 @@
         auto-rotate
         ar
         ar-modes="webxr scene-viewer quick-look">
+        <button class="hotspot" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
+            <span class="annotation">Milkshake - ₹150</span>
+        </button>
     </model-viewer>
     <button class="ar-button" onclick="viewInAR('milkshakeModel')">View in AR</button>
+
+    <div class="product-details">
+        <h4>Product Details</h4>
+        <p><strong>Name:</strong> Cute Milkshake</p>
+        <p><strong>Price:</strong> ₹150</p>
+        <p><strong>Description:</strong> A delicious creamy milkshake made with fresh ingredients.</p>
+    </div>
 
     <hr>
 
@@ -56,23 +74,43 @@
         auto-rotate
         ar
         ar-modes="webxr scene-viewer quick-look">
+        <button class="hotspot" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
+            <span class="annotation">Krackjack - ₹50</span>
+        </button>
     </model-viewer>
     <button class="ar-button" onclick="viewInAR('krackjackModel')">View in AR</button>
+
+    <div class="product-details">
+        <h4>Product Details</h4>
+        <p><strong>Name:</strong> Krackjack</p>
+        <p><strong>Price:</strong> ₹50</p>
+        <p><strong>Description:</strong> A crispy, slightly sweet biscuit perfect for tea-time snacks.</p>
+    </div>
 
     <hr>
 
     <!-- OuD -->
     <h3>OuD</h3>
     <model-viewer 
-        id="OuD"
+        id="oudModel"
         src="https://raw.githubusercontent.com/dravikkoll/NewMAiN/main/AR-Code-Object-Capture-app-1738920955.glb"
         alt="3D Model of OuD"
         camera-controls 
         auto-rotate
         ar
         ar-modes="webxr scene-viewer quick-look">
+        <button class="hotspot" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
+            <span class="annotation">OuD - ₹500</span>
+        </button>
     </model-viewer>
-    <button class="ar-button" onclick="viewInAR('newModel')">View in AR</button>
+    <button class="ar-button" onclick="viewInAR('oudModel')">View in AR</button>
+
+    <div class="product-details">
+        <h4>Product Details</h4>
+        <p><strong>Name:</strong> OuD</p>
+        <p><strong>Price:</strong> ₹1000</p>
+        <p><strong>Description:</strong> A premium aromatic OuD fragrance, rich and long-lasting.</p>
+    </div>
 
     <script>
         function viewInAR(modelId) {
