@@ -25,13 +25,12 @@
             max-width: 400px;
             height: 500px;
         }
-        .product-details {
-            background-color: #f3f3f3;
-            padding: 10px;
-            margin: 10px auto;
-            width: 80%;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        .annotation {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -49,18 +48,17 @@
         auto-rotate
         ar
         ar-modes="webxr scene-viewer quick-look">
-        <button class="hotspot" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
-            <span class="annotation">Milkshake - ₹150</span>
+        
+        <!-- Hotspots for AR Labels -->
+        <button class="annotation" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
+            🥤 Cute Milkshake - ₹150
         </button>
+        <button class="annotation" slot="hotspot-2" data-position="0 0.5 0" data-normal="0 1 0">
+            Creamy, fresh, and delicious!
+        </button>
+
     </model-viewer>
     <button class="ar-button" onclick="viewInAR('milkshakeModel')">View in AR</button>
-
-    <div class="product-details">
-        <h4>Product Details</h4>
-        <p><strong>Name:</strong> Cute Milkshake</p>
-        <p><strong>Price:</strong> ₹150</p>
-        <p><strong>Description:</strong> A delicious creamy milkshake made with fresh ingredients.</p>
-    </div>
 
     <hr>
 
@@ -74,18 +72,16 @@
         auto-rotate
         ar
         ar-modes="webxr scene-viewer quick-look">
-        <button class="hotspot" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
-            <span class="annotation">Krackjack - ₹50</span>
+        
+        <button class="annotation" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
+            🍪 Krackjack - ₹50
         </button>
+        <button class="annotation" slot="hotspot-2" data-position="0 0.5 0" data-normal="0 1 0">
+            Crispy, slightly sweet tea-time biscuit!
+        </button>
+
     </model-viewer>
     <button class="ar-button" onclick="viewInAR('krackjackModel')">View in AR</button>
-
-    <div class="product-details">
-        <h4>Product Details</h4>
-        <p><strong>Name:</strong> Krackjack</p>
-        <p><strong>Price:</strong> ₹50</p>
-        <p><strong>Description:</strong> A crispy, slightly sweet biscuit perfect for tea-time snacks.</p>
-    </div>
 
     <hr>
 
@@ -99,18 +95,16 @@
         auto-rotate
         ar
         ar-modes="webxr scene-viewer quick-look">
-        <button class="hotspot" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
-            <span class="annotation">OuD - ₹500</span>
+        
+        <button class="annotation" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
+            🌿 OuD Perfume - ₹500
         </button>
+        <button class="annotation" slot="hotspot-2" data-position="0 0.5 0" data-normal="0 1 0">
+            Premium fragrance with rich aroma.
+        </button>
+
     </model-viewer>
     <button class="ar-button" onclick="viewInAR('oudModel')">View in AR</button>
-
-    <div class="product-details">
-        <h4>Product Details</h4>
-        <p><strong>Name:</strong> OuD</p>
-        <p><strong>Price:</strong> ₹1000</p>
-        <p><strong>Description:</strong> A premium aromatic OuD fragrance, rich and long-lasting.</p>
-    </div>
 
     <script>
         function viewInAR(modelId) {
