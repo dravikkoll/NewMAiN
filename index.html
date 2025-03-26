@@ -4,11 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <title>AR Product Viewer</title>
+    <title>AR Product Gallery</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
             text-align: center;
+            padding: 50px 0;
+            font-size: 2.5em;
+        }
+        nav {
+            background-color: #ff4081;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px 5%;
+        }
+        .product-item {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        .product-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 2px solid #eee;
+        }
+        .product-item h3 {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: #333;
+        }
+        .product-item p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .product-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .product-item:hover .ar-button {
+            display: inline-block;
         }
         .ar-button {
             background-color: #ff4081;
@@ -19,92 +83,142 @@
             cursor: pointer;
             border-radius: 8px;
             margin-top: 15px;
+            display: none;
+            transition: background-color 0.3s ease;
+        }
+        .ar-button:hover {
+            background-color: #e63946;
         }
         model-viewer {
             width: 100%;
-            max-width: 400px;
-            height: 500px;
+            height: 350px;
+            margin-bottom: 20px;
         }
         .annotation {
             background: rgba(0, 0, 0, 0.7);
             color: white;
-            padding: 5px;
-            border-radius: 5px;
+            padding: 10px;
+            border-radius: 8px;
             font-size: 14px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <h2>View Products in AR</h2>
+    <header>
+        <h1>AR Product Gallery</h1>
+        <p>Explore our unique collection of products and view them in augmented reality.</p>
+    </header>
 
-    <!-- Cute Milkshake -->
-    <h3>Cute Milkshake</h3>
-    <model-viewer 
-        id="milkshakeModel"
-        src="https://raw.githubusercontent.com/dravikkoll/ar-models/main/cute_milkshake.glb"
-        alt="3D Model of Cute Milkshake"
-        camera-controls 
-        auto-rotate
-        ar
-        ar-modes="webxr scene-viewer quick-look">
-        
-        <!-- Hotspots for AR Labels -->
-        <button class="annotation" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
-            🥤 Cute Milkshake - ₹150
-        </button>
-        <button class="annotation" slot="hotspot-2" data-position="0 0.5 0" data-normal="0 1 0">
-            Creamy, fresh, and delicious!
-        </button>
+    <nav>
+        <a href="#category1">Beverages</a>
+        <a href="#category2">Snacks</a>
+        <a href="#category3">Fragrances</a>
+        <a href="#about">About</a>
+    </nav>
 
-    </model-viewer>
-    <button class="ar-button" onclick="viewInAR('milkshakeModel')">View in AR</button>
+    <!-- Beverages Category -->
+    <section id="category1">
+        <h2 style="text-align: center; margin-top: 40px;">Beverages</h2>
+        <div class="product-gallery">
+            <div class="product-item">
+                <img src="https://raw.githubusercontent.com/dravikkoll/ar-models/main/cute_milkshake.jpg" alt="Cute Milkshake">
+                <h3>Cute Milkshake</h3>
+                <p>₹150</p>
+                <p>Fresh and creamy milkshake.</p>
+                <model-viewer 
+                    src="https://raw.githubusercontent.com/dravikkoll/ar-models/main/cute_milkshake.glb" 
+                    alt="3D Model of Cute Milkshake" 
+                    camera-controls 
+                    auto-rotate 
+                    ar
+                    ar-modes="webxr scene-viewer quick-look">
+                    <button class="annotation" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
+                        🥤 Cute Milkshake - ₹150
+                    </button>
+                    <button class="annotation" slot="hotspot-2" data-position="0 0.5 0" data-normal="0 1 0">
+                        Creamy, fresh, and delicious!
+                    </button>
+                </model-viewer>
+                <button class="ar-button" onclick="viewInAR('milkshakeModel')">View in AR</button>
+            </div>
+        </div>
+    </section>
 
-    <hr>
+    <!-- Snacks Category -->
+    <section id="category2">
+        <h2 style="text-align: center; margin-top: 40px;">Snacks</h2>
+        <div class="product-gallery">
+            <div class="product-item">
+                <img src="https://raw.githubusercontent.com/dravikkoll/dravikmain/main/krackjack.jpg" alt="Krackjack">
+                <h3>Krackjack</h3>
+                <p>₹50</p>
+                <p>Crispy biscuit with a hint of sweetness.</p>
+                <model-viewer 
+                    src="https://raw.githubusercontent.com/dravikkoll/dravikmain/main/AR-Code-Object-Capture-app-1738916103.glb" 
+                    alt="3D Model of Krackjack" 
+                    camera-controls 
+                    auto-rotate 
+                    ar
+                    ar-modes="webxr scene-viewer quick-look">
+                    <button class="annotation" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
+                        🍪 Krackjack - ₹50
+                    </button>
+                    <button class="annotation" slot="hotspot-2" data-position="0 0.5 0" data-normal="0 1 0">
+                        Crispy, slightly sweet tea-time biscuit!
+                    </button>
+                </model-viewer>
+                <button class="ar-button" onclick="viewInAR('krackjackModel')">View in AR</button>
+            </div>
+        </div>
+    </section>
 
-    <!-- Krackjack -->
-    <h3>Krackjack</h3>
-    <model-viewer 
-        id="krackjackModel"
-        src="https://raw.githubusercontent.com/dravikkoll/dravikmain/main/AR-Code-Object-Capture-app-1738916103.glb"
-        alt="3D Model of Krackjack"
-        camera-controls 
-        auto-rotate
-        ar
-        ar-modes="webxr scene-viewer quick-look">
-        
-        <button class="annotation" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
-            🍪 Krackjack - ₹50
-        </button>
-        <button class="annotation" slot="hotspot-2" data-position="0 0.5 0" data-normal="0 1 0">
-            Crispy, slightly sweet tea-time biscuit!
-        </button>
+    <!-- Fragrances Category -->
+    <section id="category3">
+        <h2 style="text-align: center; margin-top: 40px;">Fragrances</h2>
+        <div class="product-gallery">
+            <div class="product-item">
+                <img src="https://raw.githubusercontent.com/dravikkoll/NewMAiN/main/oud.jpg" alt="OuD Perfume">
+                <h3>OuD Perfume</h3>
+                <p>₹500</p>
+                <p>Premium fragrance with rich aroma.</p>
+                <model-viewer 
+                    src="https://raw.githubusercontent.com/dravikkoll/NewMAiN/main/AR-Code-Object-Capture-app-1738920955.glb" 
+                    alt="3D Model of OuD Perfume" 
+                    camera-controls 
+                    auto-rotate 
+                    ar
+                    ar-modes="webxr scene-viewer quick-look">
+                    <button class="annotation" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
+                        🌿 OuD Perfume - ₹500
+                    </button>
+                    <button class="annotation" slot="hotspot-2" data-position="0 0.5 0" data-normal="0 1 0">
+                        Premium fragrance with rich aroma.
+                    </button>
+                </model-viewer>
+                <button class="ar-button" onclick="viewInAR('oudModel')">View in AR</button>
+            </div>
+        </div>
+    </section>
 
-    </model-viewer>
-    <button class="ar-button" onclick="viewInAR('krackjackModel')">View in AR</button>
+    <!-- About Section -->
+    <section id="about" style="background-color: #ff4081; padding: 30px; color: white;">
+        <h2>About Our Store</h2>
+        <p>Welcome to our AR-powered e-commerce store, where you can view and interact with products in augmented reality. Shop with confidence and experience products like never before.</p>
+    </section>
 
-    <hr>
-
-    <!-- OuD -->
-    <h3>OuD</h3>
-    <model-viewer 
-        id="oudModel"
-        src="https://raw.githubusercontent.com/dravikkoll/NewMAiN/main/AR-Code-Object-Capture-app-1738920955.glb"
-        alt="3D Model of OuD"
-        camera-controls 
-        auto-rotate
-        ar
-        ar-modes="webxr scene-viewer quick-look">
-        
-        <button class="annotation" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
-            🌿 OuD Perfume - ₹500
-        </button>
-        <button class="annotation" slot="hotspot-2" data-position="0 0.5 0" data-normal="0 1 0">
-            Premium fragrance with rich aroma.
-        </button>
-
-    </model-viewer>
-    <button class="ar-button" onclick="viewInAR('oudModel')">View in AR</button>
+    <footer>
+        <p>&copy; 2025 AR Product Gallery. All Rights Reserved.</p>
+    </footer>
 
     <script>
         function viewInAR(modelId) {
