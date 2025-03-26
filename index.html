@@ -4,27 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <title>AR Product Gallery</title>
+    <title>TISO MEALS</title>
     <style>
+        /* Global Styles */
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #2c2c2c; /* Dark background */
+            color: #fff;
         }
+
         header {
-            background-color: #333;
+            background-color: #1a1a1a;
             color: white;
             text-align: center;
             padding: 50px 0;
-            font-size: 2.5em;
         }
+
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+        }
+
         nav {
-            background-color: #ff4081;
-            padding: 15px 0;
+            background-color: #ff4081; /* Vibrant accent color */
+            padding: 10px 0;
             text-align: center;
         }
+
         nav a {
             color: white;
             margin: 0 20px;
@@ -32,15 +40,52 @@
             font-size: 18px;
             font-weight: 600;
         }
+
         nav a:hover {
             text-decoration: underline;
         }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #1a1a1a;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar a {
+            color: white;
+            padding: 15px;
+            display: block;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .sidebar a:hover {
+            background-color: #333;
+        }
+
+        .sidebar-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Product Grid */
         .product-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             padding: 40px 5%;
         }
+
         .product-item {
             background-color: white;
             border-radius: 10px;
@@ -51,29 +96,31 @@
             cursor: pointer;
             position: relative;
         }
+
         .product-item img {
             width: 100%;
             height: 250px;
             object-fit: cover;
             border-bottom: 2px solid #eee;
         }
+
         .product-item h3 {
             font-size: 1.5em;
             margin: 20px 0;
             color: #333;
         }
+
         .product-item p {
             font-size: 1.1em;
             color: #555;
             margin-bottom: 20px;
         }
+
         .product-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-        .product-item:hover .ar-button {
-            display: inline-block;
-        }
+
         .ar-button {
             background-color: #ff4081;
             color: white;
@@ -83,24 +130,14 @@
             cursor: pointer;
             border-radius: 8px;
             margin-top: 15px;
-            display: none;
             transition: background-color 0.3s ease;
         }
+
         .ar-button:hover {
             background-color: #e63946;
         }
-        model-viewer {
-            width: 100%;
-            height: 350px;
-            margin-bottom: 20px;
-        }
-        .annotation {
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 14px;
-        }
+
+        /* Footer */
         footer {
             background-color: #333;
             color: white;
@@ -115,112 +152,68 @@
 <body>
 
     <header>
-        <h1>AR Product Gallery</h1>
-        <p>Explore our unique collection of products and view them in augmented reality.</p>
+        <h1>TISO MEALS</h1>
+        <p>Explore delicious meals in Augmented Reality</p>
     </header>
 
+    <!-- Sidebar Toggle -->
+    <div class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</div>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <a href="#category1">Burgers</a>
+        <a href="#category2">Pizzas</a>
+        <a href="#category3">Sandwiches</a>
+        <a href="#category4">Rice</a>
+    </div>
+
+    <!-- Navigation Bar -->
     <nav>
-        <a href="#category1">Beverages</a>
-        <a href="#category2">Snacks</a>
-        <a href="#category3">Fragrances</a>
+        <a href="#category1">Burgers</a>
+        <a href="#category2">Pizzas</a>
+        <a href="#category3">Sandwiches</a>
+        <a href="#category4">Rice</a>
         <a href="#about">About</a>
     </nav>
 
-    <!-- Beverages Category -->
+    <!-- Product Categories -->
     <section id="category1">
-        <h2 style="text-align: center; margin-top: 40px;">Beverages</h2>
+        <h2 style="text-align: center; margin-top: 40px;">Burgers</h2>
         <div class="product-gallery">
             <div class="product-item">
-                <img src="https://raw.githubusercontent.com/dravikkoll/ar-models/main/cute_milkshake.jpg" alt="Cute Milkshake">
-                <h3>Cute Milkshake</h3>
-                <p>₹150</p>
-                <p>Fresh and creamy milkshake.</p>
+                <img src="burger-image.jpg" alt="Burger">
+                <h3>Classic Burger</h3>
+                <p>₹200</p>
+                <p>Juicy, delicious, and satisfying!</p>
                 <model-viewer 
-                    src="https://raw.githubusercontent.com/dravikkoll/ar-models/main/cute_milkshake.glb" 
-                    alt="3D Model of Cute Milkshake" 
+                    src="burger-model.glb" 
+                    alt="3D Model of Classic Burger" 
                     camera-controls 
                     auto-rotate 
                     ar
                     ar-modes="webxr scene-viewer quick-look">
-                    <button class="annotation" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
-                        🥤 Cute Milkshake - ₹150
-                    </button>
-                    <button class="annotation" slot="hotspot-2" data-position="0 0.5 0" data-normal="0 1 0">
-                        Creamy, fresh, and delicious!
-                    </button>
                 </model-viewer>
-                <button class="ar-button" onclick="viewInAR('milkshakeModel')">View in AR</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Snacks Category -->
-    <section id="category2">
-        <h2 style="text-align: center; margin-top: 40px;">Snacks</h2>
-        <div class="product-gallery">
-            <div class="product-item">
-                <img src="https://raw.githubusercontent.com/dravikkoll/dravikmain/main/krackjack.jpg" alt="Krackjack">
-                <h3>Krackjack</h3>
-                <p>₹50</p>
-                <p>Crispy biscuit with a hint of sweetness.</p>
-                <model-viewer 
-                    src="https://raw.githubusercontent.com/dravikkoll/dravikmain/main/AR-Code-Object-Capture-app-1738916103.glb" 
-                    alt="3D Model of Krackjack" 
-                    camera-controls 
-                    auto-rotate 
-                    ar
-                    ar-modes="webxr scene-viewer quick-look">
-                    <button class="annotation" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
-                        🍪 Krackjack - ₹50
-                    </button>
-                    <button class="annotation" slot="hotspot-2" data-position="0 0.5 0" data-normal="0 1 0">
-                        Crispy, slightly sweet tea-time biscuit!
-                    </button>
-                </model-viewer>
-                <button class="ar-button" onclick="viewInAR('krackjackModel')">View in AR</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Fragrances Category -->
-    <section id="category3">
-        <h2 style="text-align: center; margin-top: 40px;">Fragrances</h2>
-        <div class="product-gallery">
-            <div class="product-item">
-                <img src="https://raw.githubusercontent.com/dravikkoll/NewMAiN/main/oud.jpg" alt="OuD Perfume">
-                <h3>OuD Perfume</h3>
-                <p>₹500</p>
-                <p>Premium fragrance with rich aroma.</p>
-                <model-viewer 
-                    src="https://raw.githubusercontent.com/dravikkoll/NewMAiN/main/AR-Code-Object-Capture-app-1738920955.glb" 
-                    alt="3D Model of OuD Perfume" 
-                    camera-controls 
-                    auto-rotate 
-                    ar
-                    ar-modes="webxr scene-viewer quick-look">
-                    <button class="annotation" slot="hotspot-1" data-position="0 1 0" data-normal="0 1 0">
-                        🌿 OuD Perfume - ₹500
-                    </button>
-                    <button class="annotation" slot="hotspot-2" data-position="0 0.5 0" data-normal="0 1 0">
-                        Premium fragrance with rich aroma.
-                    </button>
-                </model-viewer>
-                <button class="ar-button" onclick="viewInAR('oudModel')">View in AR</button>
+                <button class="ar-button" onclick="viewInAR('burgerModel')">View in AR</button>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" style="background-color: #ff4081; padding: 30px; color: white;">
-        <h2>About Our Store</h2>
-        <p>Welcome to our AR-powered e-commerce store, where you can view and interact with products in augmented reality. Shop with confidence and experience products like never before.</p>
+        <h2>About TISO MEALS</h2>
+        <p>Welcome to TISO MEALS, where you can explore and interact with your favorite food in Augmented Reality. From burgers to pizzas, experience food like never before.</p>
     </section>
 
     <footer>
-        <p>&copy; 2025 AR Product Gallery. All Rights Reserved.</p>
+        <p>&copy; 2025 TISO MEALS. All Rights Reserved.</p>
     </footer>
 
     <script>
+        function toggleSidebar() {
+            let sidebar = document.getElementById('sidebar');
+            sidebar.style.transform = sidebar.style.transform === 'translateX(0)' ? 'translateX(-100%)' : 'translateX(0)';
+        }
+
         function viewInAR(modelId) {
             let modelViewer = document.getElementById(modelId);
             if (modelViewer.canActivateAR) {
