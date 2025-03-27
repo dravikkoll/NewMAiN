@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TISO MEALS - Floating Models</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        .floating-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150px;
+            height: 150px;
+            animation: floatAnimation 5s ease-in-out infinite;
+        }
+
+        @keyframes floatAnimation {
+            0% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            25% {
+                transform: translate(-50%, -60%) scale(1.1) rotate(45deg);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1) rotate(90deg);
+            }
+            75% {
+                transform: translate(-50%, -40%) scale(0.9) rotate(135deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1) rotate(180deg);
+            }
+        }
+
+        .floating-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="floating-container">
+        <!-- Floating Pizza Image -->
+        <img class="floating-image" 
+             src="/mnt/data/pizza.jpg" 
+             alt="Pizza" />
+        
+        <!-- Floating Grilled Sandwich Image -->
+        <img class="floating-image" 
+             src="/mnt/data/sandwich.jpg" 
+             alt="Grilled Sandwich" />
+
+        <!-- Floating Chinese Food Image -->
+        <img class="floating-image" 
+             src="/mnt/data/chinese.jpg" 
+             alt="Chinese Food" />
+
+        <!-- Floating Onigiri Image -->
+        <img class="floating-image" 
+             src="/mnt/data/onigiri.jpg" 
+             alt="Onigiri" />
+    </div>
+
+</body>
+</html>
